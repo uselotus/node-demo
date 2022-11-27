@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <style>
+        .subscribe-container {
+            max-width: 800px;
+            background-color: rgba(130, 184, 219, 0.5);
+            border: 5px solid rgb(98, 143, 228);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin: 20px;
+            width: 500px;
+        }
+
+        .subscribe-container input {
+            margin: 15px;
+            border: 1px solid rgb(98, 143, 228);
+            padding: 0.4rem;
+        }
+
+        .subscribe-container input {
+            flex: 1 1 200px;
+        }
+
+        .subscribe-container input[type="submit"] {
+            border-radius: 3px;
+            background-color: rgba(17, 228, 10, 0.5);
+            color: rgb(98, 143, 228);
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css">
+    <title>Testing SDK</title>
+</head>
+<body>
+<script type="text/javascript" src="static/methods.js"></script>
+<div class="subscribe-container">
+    <input onclick="trackEvent()" type="button" value="trackEvent"/>
+    <input type="button" value="getCustomers"/>
+    <input type="button" value="getCustomerDetails"/>
+    <input type="button" value="createCustomer"/>
+    <input type="button" value="createCustomersBatch">
+    <input type="button" value="getAllPlans">
+    <input type="button" value="createSubscription">
+    <input type="button" value="getAllSubscriptions">
+    <input type="button" value="getSubscriptionDetails">
+    <input type="button" value="cancelSubscription">
+    <input type="button" value="getCustomerAccess">
+    <input type="button" value="changeSubscription">
+</div>
+</body>
+</html>
