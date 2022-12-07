@@ -1,5 +1,5 @@
 const express = require('express');
-const {Lotus} = require("lotus-typescript/dist/lotus-methods");
+const {Lotus} = require("lotus-typescript/dist/index.js");
 const app = express();
 
 const API_KEY = "lIPgfucY.oQmJET2bWj1rVfC960Iu8FwESKmC3xW5"
@@ -14,7 +14,7 @@ const lotus = new Lotus(API_KEY, {
     flushAT: 1,
 })
 
-function  trackEvent  ()  {
+function trackEvent() {
     const data = [
         {
             eventName: 'validator_nodes_count_delta',
@@ -86,7 +86,8 @@ const createCustomersBatch = async () => {
 const getAllPlans = async () => {
     console.log("Calling get ALL Plans")
     try {
-        return await lotus.getAllPlans()
+        const res =  await lotus.getAllPlans()
+        console.log(res.data)
     } catch (error) {
         console.log(error)
     }
@@ -131,7 +132,7 @@ const cancelSubscription = async () => {
     const data = {
         subscriptionId: subscription_id,
         planId: plan_id,
-        turnOffAutoRenew:true
+        turnOffAutoRenew: true
     }
     try {
         await lotus.cancelSubscription(data).then(data => console.log(data))
@@ -159,7 +160,7 @@ const changeSubscription = async () => {
     const data = {
         subscriptionId: subscription_id,
         planId: plan_id,
-        replaceImmediatelyType:"change_subscription_plan"
+        replaceImmediatelyType: "change_subscription_plan"
     }
     try {
         await lotus.changeSubscription(data).then(data => console.log(data))
@@ -171,8 +172,8 @@ const changeSubscription = async () => {
 
 
 app.get("/", (req, res) => {
-    trackEvent()
-  res.sendFile(__dirname + "/index.html");
+    createSubscription()
+    res.sendFile(__dirname + "/index.html");
 });
 
 // Start the server

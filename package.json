@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "install": "^0.13.0",
-    "lotus-typescript": "^1.0.8",
+    "lotus-typescript": "^1.0.15",
     "npm": "^9.1.2"
   }
 }
