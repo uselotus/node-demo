@@ -158,9 +158,7 @@ const getCustomerAccess = async () => {
 const changeSubscription = async () => {
     console.log("Calling change subscription")
     const data = {
-        subscriptionId: subscription_id,
-        planId: plan_id,
-        replaceImmediatelyType: "change_subscription_plan"
+        customerId: customerId,
     }
     try {
         await lotus.changeSubscription(data).then(data => console.log(data))
@@ -170,9 +168,57 @@ const changeSubscription = async () => {
     console.log("----------------")
 }
 
+const deleteSubscription = async () => {
+    console.log("Calling delete subscriptions")
+    try {
+        await lotus.cancelSubscription().then(data => console.log(data))
+    } catch (error) {
+        console.log(error)
+    }
+    console.log("----------------")
+}
+
+const getCustomerMetricAccess = async () => {
+    try {
+        await lotus.getCustomerMetricAccess({
+                customerId: customerId,
+                eventName: "generate_text",
+        }).then(data => console.log(data))
+    } catch (error) {
+        console.log(error)
+    }
+    console.log("----------------")
+}
+
+
+const getCustomerFeatureAccess = async () => {
+    try {
+        await lotus.getCustomerFeatureAccess({
+                customerId: customerId,
+                featureName: "generate_text",
+        }).then(data => console.log(data))
+    } catch (error) {
+        console.log(error)
+    }
+    console.log("----------------")
+}
+
+const getInvoices = async () => {
+    try {
+        await lotus.getInvoices({}).then(data => console.log(data))
+    } catch (error) {
+        console.log(error)
+    }
+    console.log("----------------")
+}
+
 
 app.get("/", (req, res) => {
     createSubscription()
+    getCustomerMetricAccess()
+    getCustomerFeatureAccess()
+    getCustomerDetails()
+    getInvoices()
     res.sendFile(__dirname + "/index.html");
 });
 
